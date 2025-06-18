@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -77,4 +78,5 @@ dependencies {
     implementation (libs.koin.android)
 
     implementation (libs.kotlinx.coroutines.android)
+
 }
