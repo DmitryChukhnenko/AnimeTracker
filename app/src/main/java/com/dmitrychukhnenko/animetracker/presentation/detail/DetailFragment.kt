@@ -53,10 +53,6 @@ class DetailFragment : Fragment() {
             title?.let { bindTitle(it) }
         }
 
-//        viewModel.loadingState.observe(viewLifecycleOwner) { isLoading ->
-//            binding..visibility = if (isLoading) View.VISIBLE else View.GONE
-//        }
-
         binding.actionButton.setOnClickListener {
             viewModel.toggleSaveStatus()
         }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dmitrychukhnenko.animetracker.databinding.FragmentListBinding
 import com.dmitrychukhnenko.animetracker.domain.model.Title
 import com.dmitrychukhnenko.animetracker.domain.states.ListState
@@ -52,6 +53,14 @@ class ListFragment : Fragment() {
                 )
             )
         }
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val isAtTop = (recyclerView.layoutManager as LinearLayoutManager)
+                    .findFirstCompletelyVisibleItemPosition() == 0
+                binding.swipeRefresh.isEnabled = isAtTop
+            }
+        })
     }
 
     private fun setupObservers() {
@@ -65,20 +74,23 @@ class ListFragment : Fragment() {
         }
     }
 
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        binding.swipeRefresh.isRefreshing = show
+        binding.swipeRefresh.isEnabled = !show
+    }
+
     private fun handleSuccess(data: List<Title>) {
         showLoading(false)
         showEmptyState(data.isEmpty())
         adapter.submitList(data)
-    }
-
-    private fun showLoading(show: Boolean) {
-        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
-        binding.swipeRefresh.isRefreshing = show
+        binding.swipeRefresh.isEnabled = data.isEmpty()
     }
 
     private fun showEmptyState(show: Boolean) {
         binding.emptyText.visibility = if (show) View.VISIBLE else View.GONE
         binding.recyclerView.visibility = if (show) View.GONE else View.VISIBLE
+        binding.swipeRefresh.isEnabled = show
     }
 
     private fun showError(message: String) {
@@ -89,6 +101,7 @@ class ListFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.loadTitles()
         }
+        viewModel.loadTitles()
     }
 
     private fun navigateToDetail(id: Int) {

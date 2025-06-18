@@ -13,7 +13,7 @@ interface JikanApiService {
     suspend fun searchAnime(
         @Query("q") query: String,
         @Query("page") page: Int = 1,
-        @Query("limit") limit: Int = 20
+        @Query("limit") limit: Int = 10
     ): BaseSearchResponse<AnimeDto>
 
     @GET("anime/{id}")
@@ -25,7 +25,7 @@ interface JikanApiService {
     suspend fun searchManga(
         @Query("q") query: String,
         @Query("page") page: Int = 1,
-        @Query("limit") limit: Int = 20
+        @Query("limit") limit: Int = 10
     ): BaseSearchResponse<MangaDto>
 
     @GET("manga/{id}")

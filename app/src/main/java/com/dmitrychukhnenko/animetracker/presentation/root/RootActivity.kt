@@ -3,11 +3,10 @@ package com.dmitrychukhnenko.animetracker.presentation.root
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.bundle.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.dmitrychukhnenko.animetracker.databinding.ActivityRootBinding
 import com.dmitrychukhnenko.animetracker.R
+import com.dmitrychukhnenko.animetracker.databinding.ActivityRootBinding
 
 class RootActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRootBinding

@@ -3,7 +3,6 @@ package com.dmitrychukhnenko.animetracker.data.repository
 import com.dmitrychukhnenko.animetracker.data.local.dao.TitleDao
 import com.dmitrychukhnenko.animetracker.data.local.entity.TitleEntity
 import com.dmitrychukhnenko.animetracker.data.remote.api.JikanApiService
-import com.dmitrychukhnenko.animetracker.data.remote.dto.AnimeDto
 import com.dmitrychukhnenko.animetracker.domain.model.Title
 import com.dmitrychukhnenko.animetracker.domain.repository.TitleRepository
 import kotlinx.coroutines.flow.Flow

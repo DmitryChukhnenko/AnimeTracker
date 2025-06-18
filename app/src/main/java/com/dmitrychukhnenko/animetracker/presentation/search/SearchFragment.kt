@@ -1,6 +1,5 @@
 package com.dmitrychukhnenko.animetracker.presentation.search
 
-import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dmitrychukhnenko.animetracker.databinding.FragmentSearchBinding
 import com.dmitrychukhnenko.animetracker.domain.model.Title
 import com.dmitrychukhnenko.animetracker.domain.states.SearchState
@@ -38,6 +38,7 @@ class SearchFragment : Fragment() {
         setupRecyclerView()
         setupSearch()
         setupObservers()
+        setupRefresh()
     }
 
     private fun setupRecyclerView() {
@@ -55,6 +56,14 @@ class SearchFragment : Fragment() {
                 )
             )
         }
+
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val isAtTop = (recyclerView.layoutManager as LinearLayoutManager)
+                    .findFirstCompletelyVisibleItemPosition() == 0
+                binding.swipeRefresh.isEnabled = isAtTop
+            }
+        })
     }
 
     private fun setupSearch() {
@@ -85,9 +94,21 @@ class SearchFragment : Fragment() {
             when (state) {
                 is SearchState.Loading -> showLoading(true)
                 is SearchState.Success -> handleSuccess(state.data)
-                is SearchState.Error -> showError(state.message)
+                is SearchState.Error -> showError()
             }
         }
+    }
+
+    private fun setupRefresh() {
+        binding.swipeRefresh.setOnRefreshListener {
+            performSearch()
+        }
+    }
+
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        binding.swipeRefresh.isRefreshing = show
+        binding.swipeRefresh.isEnabled = !show
     }
 
     private fun handleSuccess(data: List<Title>) {
@@ -100,21 +121,15 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun showLoading(show: Boolean) {
-        binding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
-        binding.swipeRefresh.isRefreshing = show
+    private fun showError() {
+        binding.recyclerView.visibility = View.GONE
+        binding.emptyText.visibility = View.GONE
+        binding.swipeRefresh.isEnabled = true
     }
 
     private fun showEmptyState(show: Boolean) {
         binding.emptyText.visibility = if (show) View.VISIBLE else View.GONE
         binding.recyclerView.visibility = if (show) View.GONE else View.VISIBLE
-    }
-
-    private fun showError(message: String) {
-        binding.errorText.text = message
-        binding.errorText.visibility = View.VISIBLE
-        binding.recyclerView.visibility = View.GONE
-        binding.emptyText.visibility = View.GONE
     }
 
     private fun navigateToDetail(id: Int) {
