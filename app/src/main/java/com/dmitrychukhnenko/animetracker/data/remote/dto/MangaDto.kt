@@ -24,11 +24,11 @@ data class MangaDto(
             genres = combineGenres()
         )
     }
-    
+
     private fun combineGenres(): List<String> {
-        return (genres.toGenreList() + 
-                explicitGenres.toGenreList() + 
-                themes.toGenreList() + 
+        return (genres.toGenreList() +
+                explicitGenres.toGenreList() +
+                themes.toGenreList() +
                 demographics.toGenreList()).distinct()
     }
 }

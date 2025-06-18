@@ -6,7 +6,7 @@ import com.dmitrychukhnenko.animetracker.domain.use_case.SaveTitleUseCase
 import com.dmitrychukhnenko.animetracker.domain.use_case.SearchTitlesUseCase
 import org.koin.dsl.module
 
-val domainModule = module{
+val domainModule = module {
     factory { SearchTitlesUseCase(get()) }
     factory { GetSavedTitlesUseCase(get()) }
     factory { SaveTitleUseCase(get()) }
