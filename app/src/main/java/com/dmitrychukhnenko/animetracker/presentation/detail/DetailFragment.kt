@@ -6,19 +6,20 @@ import android.view.ViewGroup
 import androidx.core.bundle.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.dmitrychukhnenko.animetracker.R
 import com.dmitrychukhnenko.animetracker.databinding.FragmentDetailBinding
 import com.dmitrychukhnenko.animetracker.domain.model.Title
-import org.koin.mp.KoinPlatform.getKoin
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
-    private lateinit var viewModel: DetailViewModel
     private val args: DetailFragmentArgs by navArgs()
+
+    private val viewModel: DetailViewModel by viewModel { parametersOf(args.titleId) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,13 +32,6 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val titleId = args.titleId
-        viewModel = ViewModelProvider(
-            this,
-            DetailViewModelFactory(titleId, getKoin().get())
-        )[DetailViewModel::class.java]
-
         setupObservers()
         setupToolbar()
     }

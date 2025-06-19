@@ -1,5 +1,4 @@
 <resources>
-    <!-- Общие -->
     <string name="app_name">AnimeTracker</string>
     <string name="action_add">Добавить</string>
     <string name="action_remove">Удалить</string>
@@ -7,7 +6,6 @@
     <string name="action_save">Сохранить</string>
     <string name="action_cancel">Отмена</string>
 
-    <!-- Заголовки -->
     <string name="title_home">Главная</string>
     <string name="title_search">Поиск</string>
     <string name="title_my_list">Мой список</string>
@@ -41,6 +39,6 @@
 
     <string name="value_unknown">Неизвестно</string>
     <string name="value_na">N/A</string>
-    <string name="poster">poster</string>
-    <string name="no_synopsis">No synopsis</string>
+    <string name="poster">Постер</string>
+    <string name="no_synopsis">Отсутствует описание</string>
 </resources>
