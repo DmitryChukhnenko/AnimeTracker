@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/_48dp</item>
+        <item name="cornerRadius">@dimen/corner_radius_8dp</item>
+        <item name="android:layout_margin">@dimen/padding_small</item>
+    </style>
+
+    <style name="ButtonStyle.Primary" parent="BaseButton">
+        <item name="backgroundTint">@color/primary_500</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonStyle.Secondary" parent="BaseButton">
+        <item name="backgroundTint">@color/secondary_500</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ButtonStyle.Text" parent="BaseButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:padding">@dimen/_0dp</item>
+    </style>
+
+    <style name="EditTextStyle.Base" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary_500</item>
+        <item name="hintTextColor">@color/text_hint</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="EditTextStyle.Light" parent="EditTextStyle.Base">
+        <item name="boxStrokeColor">@color/primary_500</item>
+    </style>
+
+    <style name="EditTextStyle.Dark" parent="EditTextStyle.Base">
+        <item name="boxStrokeColor">@color/secondary_500</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:background">@color/primary_500</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">@dimen/_20sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TitleText.Primary">
+        <item name="android:textSize">@dimen/_20sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TitleText.Secondary">
+        <item name="android:textSize">@dimen/_16sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="DetailLabel">
+        <item name="android:textSize">@dimen/_14sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailValue">
+        <item name="android:textSize">@dimen/_14sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="SynopsisText">
+        <item name="android:textSize">@dimen/_14sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+</resources>

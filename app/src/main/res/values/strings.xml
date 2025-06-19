@@ -1,6 +1,44 @@
 <resources>
     <string name="app_name">AnimeTracker</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="action_add">Добавить</string>
+    <string name="action_remove">Удалить</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
+
+    <string name="title_home">Главная</string>
+    <string name="title_search">Поиск</string>
+    <string name="title_my_list">Мой список</string>
+    <string name="title_details">Детали</string>
+    <string name="title_anime">Аниме</string>
+    <string name="title_manga">Манга</string>
+    <string name="title_light_novel">Ранобэ</string>
+
+    <string name="msg_no_results">Ничего не найдено</string>
+    <string name="msg_empty_list">Список пуст</string>
+    <string name="msg_loading">Загрузка…</string>
+    <string name="msg_network_error">Ошибка сети</string>
+    <string name="msg_added_to_list">Добавлено в список</string>
+
+    <string name="hint_search">Поиск аниме, манги…</string>
+    <string name="hint_episodes">Эпизоды</string>
+    <string name="hint_chapters">Главы</string>
+    <string name="hint_volumes">Тома</string>
+
+    <string name="label_type">Тип:</string>
+    <string name="label_status">Статус:</string>
+    <string name="label_episodes">Эпизоды:</string>
+    <string name="label_chapters">Главы:</string>
+    <string name="label_score">Оценка:</string>
+    <string name="label_synopsis">Синопсис</string>
+
+    <string name="error_unknown">Неизвестная ошибка</string>
+
+    <string name="nav_search">Поиск</string>
+    <string name="nav_my_list">Мой список</string>
+
+    <string name="value_unknown">Неизвестно</string>
+    <string name="value_na">N/A</string>
+    <string name="poster">Постер</string>
+    <string name="no_synopsis">Отсутствует описание</string>
 </resources>
